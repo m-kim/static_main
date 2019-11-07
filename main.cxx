@@ -9,8 +9,9 @@
 // with this software. If not, see <http://creativecommons.org/publicdomain/zero/1.0/>.
 //==================================================================================================
 #include <vtkm/cont/Initialize.h>
+#include <vtkm/cont/DeviceAdapter.h>
+#include <vtkm/cont/RuntimeDeviceTracker.h>
 
-//#include <vtkm/cont/DeviceAdapter.h>
 //#include <vtkm/cont/testing/MakeTestDataSet.h>
 //#include <vtkm/cont/testing/Testing.h>
 //#include <vtkm/rendering/Actor.h>
@@ -26,8 +27,6 @@
 
 //void testRaytracer()
 //{
-//  vtkm::cont::Initialize();
-//  vtkm::cont::GetRuntimeDeviceTracker().ForceDevice(vtkm::cont::DeviceAdapterTagCuda{});
 //  using C = vtkm::rendering::CanvasRayTracer;
 //  using M = vtkm::rendering::MapperRayTracer;
 //  using V3 = vtkm::rendering::View3D;
@@ -42,8 +41,8 @@
 //}
 void testSort()
 {
-  std::vector<float> array(0);
-  for (int i = 9; i>=0; i++){
+  std::vector<float> array(10);
+  for (int i = 9; i>=0; i--){
     array[i] = i;
     }
 
@@ -53,6 +52,8 @@ void testSort()
 
 }
 int main(int argc, char *argv[]) {
+  vtkm::cont::Initialize();
+  vtkm::cont::GetRuntimeDeviceTracker().ForceDevice(vtkm::cont::DeviceAdapterTagCuda{});
 
   //testRaytracer();
 
