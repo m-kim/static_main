@@ -12,33 +12,33 @@
 #include <vtkm/cont/DeviceAdapter.h>
 #include <vtkm/cont/RuntimeDeviceTracker.h>
 
-//#include <vtkm/cont/testing/MakeTestDataSet.h>
-//#include <vtkm/cont/testing/Testing.h>
-//#include <vtkm/rendering/Actor.h>
-//#include <vtkm/rendering/CanvasRayTracer.h>
-//#include <vtkm/rendering/MapperRayTracer.h>
-//#include <vtkm/rendering/Scene.h>
-//#include <vtkm/rendering/View3D.h>
-//#include <vtkm/rendering/testing/RenderTest.h>
+#include <vtkm/cont/testing/MakeTestDataSet.h>
+#include <vtkm/cont/testing/Testing.h>
+#include <vtkm/rendering/Actor.h>
+#include <vtkm/rendering/CanvasRayTracer.h>
+#include <vtkm/rendering/MapperRayTracer.h>
+#include <vtkm/rendering/Scene.h>
+#include <vtkm/rendering/View3D.h>
+#include <vtkm/rendering/testing/RenderTest.h>
 
 
 #include <vtkm/cont/Algorithm.h>
 #include <vtkm/cont/ArrayHandle.h>
 
-//void testRaytracer()
-//{
-//  using C = vtkm::rendering::CanvasRayTracer;
-//  using M = vtkm::rendering::MapperRayTracer;
-//  using V3 = vtkm::rendering::View3D;
-//  using V2 = vtkm::rendering::View2D;
+void testRaytracer()
+{
+  using C = vtkm::rendering::CanvasRayTracer;
+  using M = vtkm::rendering::MapperRayTracer;
+  using V3 = vtkm::rendering::View3D;
+  using V2 = vtkm::rendering::View2D;
 
-//  vtkm::cont::testing::MakeTestDataSet maker;
-//  vtkm::cont::ColorTable colorTable("inferno");
+  vtkm::cont::testing::MakeTestDataSet maker;
+  vtkm::cont::ColorTable colorTable("inferno");
 
-//  vtkm::rendering::testing::Render<M, C, V3>(
-//    maker.Make3DRegularDataSet0(), "pointvar", colorTable, "rt_reg3D.pnm");
+  vtkm::rendering::testing::Render<M, C, V3>(
+    maker.Make3DRegularDataSet0(), "pointvar", colorTable, "rt_reg3D.pnm");
 
-//}
+}
 void testSort()
 {
   std::vector<float> array(10);
@@ -55,7 +55,7 @@ int main(int argc, char *argv[]) {
   vtkm::cont::Initialize();
   vtkm::cont::GetRuntimeDeviceTracker().ForceDevice(vtkm::cont::DeviceAdapterTagCuda{});
 
-  //testRaytracer();
+  testRaytracer();
 
   testSort();
 
